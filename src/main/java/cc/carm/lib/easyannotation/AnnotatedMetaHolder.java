@@ -25,6 +25,10 @@ public class AnnotatedMetaHolder {
         this.values = values;
     }
 
+    public Map<AnnotatedMetaType<?, ?>, Object> getValues() {
+        return values;
+    }
+
     /**
      * Get the value of option.
      *
@@ -48,6 +52,10 @@ public class AnnotatedMetaHolder {
      */
     public <V> @Nullable V get(@NotNull AnnotatedMetaType<?, V> type) {
         return get(type, null);
+    }
+
+    public boolean has(@NotNull AnnotatedMetaType<?, ?> type) {
+        return values.containsKey(type);
     }
 
     /**
