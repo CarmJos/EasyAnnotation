@@ -7,6 +7,14 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.function.Function;
 
+/**
+ * The Annotated meta type.
+ *
+ * @param <N> The type of annotation
+ * @param <V> The type of value
+ * @author CarmJos
+ * @version 1.0.0
+ */
 public abstract class AnnotatedMetaType<N extends Annotation, V> {
 
     public static <T extends Annotation, E> AnnotatedMetaType<T, E> of(@NotNull Class<T> annotationType,

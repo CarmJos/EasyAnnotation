@@ -6,8 +6,21 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The Annotated meta loader.
+ * <br> {@link AnnotatedMetaLoader} will load the registered meta types from {@link Class} or {@link Field}.
+ *
+ * @author CarmJos
+ * @version 1.0.0
+ */
 public class AnnotatedMetaLoader {
 
+    /**
+     * Create a new Annotated meta loader.
+     *
+     * @param types The types to register
+     * @return The new Annotated meta loader
+     */
     public static AnnotatedMetaLoader of(AnnotatedMetaType<?, ?>... types) {
         return of(Arrays.asList(types));
     }
@@ -30,6 +43,12 @@ public class AnnotatedMetaLoader {
         types.remove(type);
     }
 
+    /**
+     * Load meta from a class.
+     *
+     * @param clazz The class to load
+     * @return {@link AnnotatedMetaHolder}
+     */
     public AnnotatedMetaHolder load(Class<?> clazz) {
         AnnotatedMetaHolder holder = new AnnotatedMetaHolder();
         for (AnnotatedMetaType<?, ?> type : types) {
@@ -39,6 +58,12 @@ public class AnnotatedMetaLoader {
         return holder;
     }
 
+    /**
+     * Load meta from a field.
+     *
+     * @param clazz The field to load
+     * @return {@link AnnotatedMetaHolder}
+     */
     public AnnotatedMetaHolder load(Field clazz) {
         AnnotatedMetaHolder holder = new AnnotatedMetaHolder();
         for (AnnotatedMetaType<?, ?> type : types) {
