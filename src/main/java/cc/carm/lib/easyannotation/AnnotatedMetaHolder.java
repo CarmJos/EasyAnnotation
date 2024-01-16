@@ -76,6 +76,42 @@ public class AnnotatedMetaHolder {
         }
     }
 
+    /**
+     * Set the value of meta, if the value is null, the meta will not be changed.
+     * <br> Will only be changed in current holder.
+     *
+     * @param type  {@link AnnotatedMetaType}
+     * @param value Value of meta
+     * @param <V>   Value type
+     */
+    public <V> void setIfAbsent(@NotNull AnnotatedMetaType<?, V> type, @Nullable V value) {
+        if (value == null) {
+            values.remove(type);
+        } else {
+            values.putIfAbsent(type, value);
+        }
+    }
+
+    /**
+     * Set the value of meta, if the value is null, the meta will not be changed.
+     * <br> Will only be changed in current holder.
+     *
+     * @param type  {@link AnnotatedMetaType}
+     * @param value Value of meta
+     * @param <V>   Value type
+     */
+    @SuppressWarnings("unchecked")
+    public <V> @Nullable V setIfPresent(@NotNull AnnotatedMetaType<?, V> type, @Nullable V value) {
+        Object exists = values.get(type);
+        if (exists == null) return null;
+
+        if (value == null) {
+            return (V) values.remove(type);
+        } else {
+            return (V) values.put(type, value);
+        }
+    }
+
     protected void put(@NotNull AnnotatedMetaType<?, ?> type, @Nullable Object value) {
         values.put(type, value);
     }
