@@ -35,11 +35,17 @@ public interface DemoMetas {
     /**
      * Meta descriptions
      */
-    AnnotatedMetaType<DemoAnnotation, String> SAYING = AnnotatedMetaType.of(DemoAnnotation.class, DemoAnnotation::value);
+    AnnotatedMetaType<DemoAnnotation, String> SAYING = AnnotatedMetaType.of(
+            DemoAnnotation.class, DemoAnnotation::value
+    );
     
-    AnnotatedMetaType<DemoAnnotation, Boolean> SUCCESS = AnnotatedMetaType.of(DemoAnnotation.class, DemoAnnotation::success);
+    AnnotatedMetaType<DemoAnnotation, Boolean> SUCCESS = AnnotatedMetaType.of(
+            DemoAnnotation.class, DemoAnnotation::success
+    );
     
-    AnnotatedMetaType<DemoAnnotation, Boolean> ANNOTATED = AnnotatedMetaType.of(DemoAnnotation.class, (a) -> true);
+    AnnotatedMetaType<DemoAnnotation, Boolean> ANNOTATED = AnnotatedMetaType.of(
+            DemoAnnotation.class, (a) -> true
+    );
     
 }
 
